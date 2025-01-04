@@ -10,6 +10,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     UsersModule,
     AuthModule,
     MongooseModule.forRoot(process.env.MONGO_URI)], // caminho para o banco de dados
+    
   controllers: [AppController],
   providers: [AppService],
 })
