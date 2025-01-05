@@ -16,7 +16,7 @@ export class AuthService {
   public async createAcessToken(userId: string): Promise<string> {
     return sign({ userId }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRATION}); // sign é uma função do jwt que cria um token, passamos o userId, a chave secreta e o tempo de expiração
   }
-
+  
   public async validateUser(jwtPayload: jwtPayload): Promise<User> {
     const user = await this.usersModel.findOne({_id: jwtPayload.userId}); // procuramos o usuário pelo id
     if(!user) {
@@ -25,9 +25,8 @@ export class AuthService {
     return user;
   }
 
-  private static jwtExtractor(request: Request):string {
-    const authHeader = request.headers.authorization; // vem o token no header
-     
+  private jwtExtractor(request: Request):string {
+    const authHeader = request.headers['authorization']; // Obtém o cabeçalho Authorization
     if(!authHeader) {
       throw new BadRequestException('Bad request.');
     }

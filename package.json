@@ -34,6 +34,8 @@
     "class-validator": "^0.14.1",
     "devsignin": "file:",
     "docker": "^1.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport-jwt": "^4.0.1",
     "pg": "^8.13.1",
     "project": "file:",
     "reflect-metadata": "^0.2.0",
